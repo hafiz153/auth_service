@@ -1,8 +1,11 @@
 import 'dotenv/config';
 export interface IAppConfig {
   port: number;
-  mongoURL: string;
   redisURL: string;
+  redisPassword: string;
+  mongoURL: string;
+  mongoUsername: string;
+  mongoPassword: string;
   jwtSecret: string;
   jwtRefreshSecret: string;
 }
@@ -25,8 +28,11 @@ const config = (): IAppConfig => {
 
   return {
     port,
-    mongoURL: env.MONGO_URL || '',
     redisURL: env.REDIS_URL || '',
+    redisPassword: env.REDIS_PASSWORD || '',
+    mongoURL: env.MONGO_URL || '',  
+    mongoUsername:env.MONGO_USERNAME || '',
+    mongoPassword: env.MONGO_PASSWORD || '',
     jwtSecret: env.JWT_SECRET || '',
     jwtRefreshSecret: env.JWT_REFRESHTOKEN_SECRET || '',
   };

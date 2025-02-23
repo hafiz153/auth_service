@@ -25,6 +25,7 @@
     "@nestjs/core": "^11.0.1",
     "@nestjs/jwt": "^11.0.0",
     "@nestjs/mapped-types": "*",
+    "@nestjs/microservices": "^11.0.10",
     "@nestjs/mongoose": "^11.0.0",
     "@nestjs/passport": "^11.0.5",
     "@nestjs/platform-express": "^11.0.1",
@@ -35,6 +36,7 @@
     "crypto": "^1.0.1",
     "dotenv": "^16.4.7",
     "helmet": "^8.0.0",
+    "ioredis": "^5.5.0",
     "mongoose": "^8.9.5",
     "passport": "^0.7.0",
     "passport-jwt": "^4.0.1",
@@ -85,5 +87,6 @@
     ],
     "coverageDirectory": "../coverage",
     "testEnvironment": "node"
-  }
+  },
+  "packageManager": "yarn@4.6.0+sha512.5383cc12567a95f1d668fbe762dfe0075c595b4bfff433be478dbbe24e05251a8e8c3eb992a986667c1d53b6c3a9c85b8398c35a960587fbd9fa3a0915406728"
 }
