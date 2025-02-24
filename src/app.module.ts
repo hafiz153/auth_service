@@ -7,10 +7,12 @@ import { TestModule } from './test/test.module';
 import config from './config';
 import { SubscriptionPlanModule } from './subscriptionPlan/subscriptionPlan.module';
 import { CustomFlexModule } from './customFlex/customFlex.module';
+import { MicroServiceModule } from './common/redis/microserviceModule';
 
 @Module({
   imports: [
     MongooseModule.forRoot(config.mongoURL),
+    MicroServiceModule.register(config.redisURL),
     AuthModule,
     UsersModule,
     RoleModule,
