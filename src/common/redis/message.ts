@@ -8,5 +8,5 @@ export class RedisSingleMessageType<T, U> {
 }
 
 export class MessageDataReturn {
-  [RedisMessageEnum.TEST]: RedisSingleMessageType<string, any>;
+  [RedisMessageEnum.TEST]: RedisSingleMessageType<any, any>;
 }

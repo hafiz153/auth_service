@@ -1,4 +1,4 @@
-import { ClientOptions, ClientProxy, ClientProxyFactory, Transport } from '@nestjs/microservices';
+import { ClientProxy, ClientProxyFactory, Transport } from '@nestjs/microservices';
 import { DynamicModule, Global, HttpException, Inject, Logger, Module } from '@nestjs/common';
 import { firstValueFrom } from 'rxjs';
 import { timeout } from 'rxjs/operators';
@@ -27,19 +27,20 @@ export class MicroserviceClient {
 
 @Global()
 @Module({})
-export class MicroServiceModule {
-	static register(redisURL: string): DynamicModule {
+export class MicroServiceClientModule {
+	static register(): DynamicModule {
 		return {
-			module: MicroServiceModule,
+			module: MicroServiceClientModule,
 			providers: [
 				{
 					provide: 'MICRO_SERVICE',
 					
 					useValue: ClientProxyFactory.create({
-						// transport: Transport.REDIS, 
+						transport: Transport.REDIS, 
 						options: {
-							url: redisURL, 
-							auth_pass: config.redisPassword,
+							host: config.redisHost, 
+							port:config.redisPort,
+							password: config.redisPassword,
 						},
 					}),
 				},

@@ -3,10 +3,11 @@ import { TestService } from './test.service';
 import { TestController } from './test.controller';
 import { MongooseModule } from '@nestjs/mongoose';
 import { Test, TestSchema } from './entities/test.entity';
+import { TestInternalController } from './test.internal.controller';
 
 @Module({
   imports:[MongooseModule.forFeature([{ name: Test.name, schema: TestSchema }])],
-  controllers: [TestController],
+  controllers: [TestController,TestInternalController],
   providers: [TestService],
 })
 export class TestModule {}

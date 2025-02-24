@@ -6,6 +6,7 @@ import helmet from 'helmet';
 import { ValidationPipe } from '@nestjs/common';
 import { AllExceptionsFilter } from './common/exceptions/all-exception.filter';
 import { GlobalResponseTransformer } from './common/interceptors/response.interceotpr';
+import config from './config';
 
 async function bootstrap() {
   // ✅ 1️⃣ Start HTTP API for Swagger, global pipes, etc.
@@ -30,7 +31,7 @@ async function bootstrap() {
   app.useGlobalInterceptors(new GlobalResponseTransformer());
   app.useGlobalFilters(new AllExceptionsFilter());
 
-  await app.listen(3000); // HTTP Service
+  await app.listen(config.port); // HTTP Service
   console.log(`🚀 API is running at http://localhost:3000/api/docs`);
 
   // ✅ 2️⃣ Start Redis Microservice for Background Processing
@@ -39,6 +40,7 @@ async function bootstrap() {
     options: {
       host: 'localhost',
       port: 6379,
+      password:config.redisPassword,
       retryAttempts: 5,
       retryDelay: 5000,
     },
